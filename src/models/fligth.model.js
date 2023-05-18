@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const flightSchema = new mongoose.Schema({
   airport_depart: {
-    cityDepart: String,
+    city: String,
     name: String,
     iataCode: String,
   },
   airport_arrive: {
-    cityArrive: String,
+    city: String,
     name: String,
     iataCode: String,
   },
