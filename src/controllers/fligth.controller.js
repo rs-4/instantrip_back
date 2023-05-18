@@ -36,8 +36,8 @@ async function generateFlight() {
     airport_depart: airportDepart,
     airport_arrive: airportArrive,
     date_depart: faker.date.soon(),
-    date_arrive: faker.date.soon({ days: 30 }),
-    prix: faker.commerce.price({ min: 200, max: 900, dec: 2, symbol: "€" }),
+    date_return: faker.date.soon({ days: 30 }),
+    prix: faker.commerce.price({ min: 200, max: 900, dec: 2 }),
     thumbnail: faker.image.urlLoremFlickr({ category: "city" }),
   };
 }
@@ -65,5 +65,27 @@ exports.deleteAllfligth = async (req, res, next) => {
   } catch (error) {
     console.error("Error deleting flights:", error);
     res.status(500).send("Error deleting flights.");
+  }
+};
+
+exports.searchFlights = async (req, res, next) => {
+  try {
+    const { cityDepart, cityArrive, prix, dateDepart, dateReturn } = req.body;
+
+    let query = {};
+
+    if (cityDepart)
+      query["airport_depart.city"] = { $regex: cityDepart, $options: "i" };
+    if (cityArrive)
+      query["airport_arrive.city"] = { $regex: cityArrive, $options: "i" };
+    if (prix) query.prix = { $lte: Number(prix) };
+    if (dateDepart) query.date_depart = { $gte: new Date(dateDepart) };
+    if (dateReturn) query.date_return = { $lte: new Date(dateReturn) };
+
+    const flights = await Flight.find(query);
+    res.json(flights);
+  } catch (error) {
+    console.error("Error searching flights:", error);
+    res.status(500).send("Error searching flights.");
   }
 };

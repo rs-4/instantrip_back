@@ -12,7 +12,7 @@ const flightSchema = new mongoose.Schema({
     iataCode: String,
   },
   date_depart: Date,
-  date_arrive: Date,
+  date_return: Date,
   prix: String,
   thumbnail: String,
 });

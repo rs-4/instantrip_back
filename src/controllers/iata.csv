@@ -6627,7 +6627,7 @@ CQM,Europe/Madrid,Ciudad Real Central,CQM,ES,POINT (-3.916667 38.983334),2093,ht
 ANE,Europe/Paris,Angers-Marce Airport,ANE,FR,POINT (-0.55 47.466667),144,,LFJR,,,
 LTT,Europe/Paris,La Mole,LTT,FR,POINT (6.633333 43.283333),0,,LFTZ,,,
 BSL,Europe/Zurich,EuroAirport Swiss,EAP,CH,POINT (7.532604 47.59961),862,http://www.euroairport.com/,LFSB,Paris,,
-CDG,Europe/Paris,Charles de Gaulle Airport,PAR,FR,POINT (2.5710819691019156 49.0068908),337,http://www.aeroportsdeparis.fr/,LFPG,,,
+CDG,Europe/Paris,Charles de Gaulle Airport,PAR,FR,POINT (2.5710819691019156 49.0068908),337,http://www.aeroportsdeparis.fr/,LFPG,Paris,Paris,Paris
 SXB,Europe/Paris,Strasbourg Airport,SXB,FR,POINT (7.625009702296425 48.538652549999995),498,http://www.strasbourg.aeroport.fr/E/index.php,LFST,,,
 TLN,Europe/Paris,Hyeres Airport,TLN,FR,POINT (6.159303 43.09349),7,http://toulon-hyeres.aeroport.fr/,LFTH,,,
 PEV,Europe/Budapest,Pecs Pogany,PEV,HU,POINT (170.6 69.78333),29,http://www.airport-pecs.hu/,LHPP,,,
