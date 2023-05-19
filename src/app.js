@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 mongoose
   .connect(
-    `mongodb://Dev:Dev@ac-jliazid-shard-00-00.vxyhvdv.mongodb.net:27017,ac-jliazid-shard-00-01.vxyhvdv.mongodb.net:27017,ac-jliazid-shard-00-02.vxyhvdv.mongodb.net:27017/?ssl=true&replicaSet=atlas-bmyjkd-shard-0&authSource=admin&retryWrites=true&w=majority`
+    `mongodb+srv://Dev:Dev@instantrip.vxyhvdv.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => {
     console.log("successfully connect to database");

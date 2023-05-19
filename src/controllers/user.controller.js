@@ -47,3 +47,24 @@ exports.resetPassword = async (req, res, next) => {
     next(err);
   }
 }
+
+//update logged user (base on token)
+exports.updateMe = async (req, res, next) => {
+  try {
+    //find user and update
+    const userToModify = await User.findByIdAndUpdate(req.userToken.body.id, req.body, { new: true });
+    if (!userToModify) {
+      const error = new Error("User not found")
+      error.status = 404
+      throw error;
+    }
+    //return user
+    res.send({
+      success: true,
+      user: userToModify
+    });
+  }
+  catch (err) {
+    next(err)
+  }
+}
