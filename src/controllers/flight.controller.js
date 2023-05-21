@@ -2,7 +2,8 @@ const csv = require("fast-csv");
 const fs = require("fs");
 const path = require("path");
 const { faker } = require("@faker-js/faker");
-const Flight = require("../models/fligth.model");
+const Flight = require("../models/flight.model");
+const User = require("../models/user.model");
 
 function findCityOrTimeZone(iataCode) {
   return new Promise((resolve, reject) => {
@@ -88,4 +89,29 @@ exports.searchFlights = async (req, res, next) => {
     console.error("Error searching flights:", error);
     res.status(500).send("Error searching flights.");
   }
+};
+
+exports.bookFlight = async (req, res, next) => {
+    const flight = await Flight.findById(req.body.flightId);
+    if(!flight){
+      return res.status(404).send("Flight not found.");
+    }
+
+    const user = await User.findById(req.body.userId);
+    if(!user){
+      return res.status(404).send("User not found.");
+    }
+
+    try{
+      if(!user.flight.includes(flight._id)){
+        user.flight.push(flight);
+        await user.save();
+        res.send("Flight booked successfully.");
+      }else{
+        res.send("Flight already booked.");
+      }
+    }catch(error){
+      console.error("Error booking flight:", error);
+      res.status(500).send("Error booking flight.");
+    }
 };

@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(cors());
-app.use("/api/", apiRouter);
+app.use("/api", apiRouter);
 
 app.listen(process.env.PORT, function () {
   console.log("Server launch");

@@ -33,9 +33,9 @@ const userSchema = mongoose.Schema ({
         type: String,
         required: true
       },
-    flight: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Flight',
-      },
+    flight: [
+      {type: mongoose.Schema.Types.ObjectId, ref: 'Flight'}
+    ],
 })
 
 const User = mongoose.model("User", userSchema);
